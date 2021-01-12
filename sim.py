@@ -70,7 +70,7 @@ async def generate():
     samples = model.sample(1000, random.randint(0,9999999))
 
     for sample in samples[0]:
-        await sio.emit('news', { 'X': (sample[0] + sample[6]) / 2, 'Y': (sample[1] + sample[7]) / 2, 'Timestamp': 159391614.476313 } )
+        await sio.emit('news', { 'X': (sample[0] + sample[6]) / 2, 'Y': (sample[1] + sample[7]) / 2, 'Timestamp': time.time() * 1000 } )
         await asyncio.sleep(0.03)
 
     asyncio.create_task(generate())
